@@ -5,24 +5,25 @@ class Map:
         self.y_ = y
         self.free_param = 'o'
         self.occupy_param = 'X'
-        self.block_param = '-'
+        self.block_param = 'B'
         self.map_ = self.initMap()
         
     # initialize the map with everything on a free status
     def initMap(self):
-        listX = []
-        for i in range(self.getX()):
-            listY = []
-            for j in range(self.getY()):
-                listY += [self.free_param]
-            listX += [listY]
-        return listX
+        listY = []
+        for i in range(self.getY()):
+            listX = []
+            for j in range(self.getX()):
+                listX += [self.free_param]
+            listY += [listX]
+        return listY
     
-    # dsplay the map
+    # display the map
     def printMap(self):
         for elem in self.map_:
             print(elem)
             
+    # Modify the map
     def occupy(self,x,y):
         self.setMap(x,y, self.occupy_param)
         
@@ -32,8 +33,16 @@ class Map:
     def check_free(self, x, y):
         return( self.getMap(x,y) == self.free_param)
     
+    # Ajout d'obstacles
     def block(self, x, y):
         self.setMap(x,y,self.block_param)
+    
+    def obstacle(self, x1, x2, y1, y2):
+        for i in range(len(self.map_)):
+            if x1 <= i and i <= x2:
+                for j in range(len(self.map_[i])):
+                    if y1<=j and j<=y2:
+                        self.block(i,j)
     
     # =================
     # Getter and Setter

@@ -41,8 +41,6 @@ class Robot:
             map.occupy(self.x_, self.y_)
     
     
-            
-    
     # Getter and setter
     def getX0(self):
         return(self.x0_)
