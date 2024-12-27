@@ -5,6 +5,7 @@ class Map:
         self.y_ = y
         self.free_param = 'o'
         self.occupy_param = 'X'
+        self.block_param = '-'
         self.map_ = self.initMap()
         
     # initialize the map with everything on a free status
@@ -30,6 +31,9 @@ class Map:
     
     def check_free(self, x, y):
         return( self.getMap(x,y) == self.free_param)
+    
+    def block(self, x, y):
+        self.setMap(x,y,self.block_param)
     
     # =================
     # Getter and Setter
