@@ -5,19 +5,26 @@ class Map:
         self.y_ = y
         self.map_ = self.initMap()
         
-
+    # initialize the map with everything on a free status
     def initMap(self):
-        listY = []
-        for i in range(self.getY()):
-            listX = []
-            for j in range(self.getX()):
-                listX += [0]
-            listY += [listX]
-        return listY
+        listX = []
+        for i in range(self.getX()):
+            listY = []
+            for j in range(self.getY()):
+                listY += ['o']
+            listX += [listY]
+        return listX
     
+    # dsplay the map
     def printMap(self):
         for elem in self.map_:
             print(elem)
+            
+    def occupy(self,x,y):
+        self.setMap(x,y, 'X')
+        
+    def free(self,x, y):
+        self.setMap(x,y,'o')
     
     # =================
     # Getter and Setter
@@ -31,3 +38,6 @@ class Map:
     
     def getSize(self):
         return(self.x_, self.y_)
+
+    def setMap(self,x, y, value):
+        self.map_[y-1][x-1] = value
