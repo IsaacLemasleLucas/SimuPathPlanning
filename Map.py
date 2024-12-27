@@ -7,16 +7,17 @@ class Map:
         
 
     def initMap(self):
-        listX = []
+        listY = []
         for i in range(self.getY()):
-            listY = []
+            listX = []
             for j in range(self.getX()):
-                listY += [0]
-            listX += [listY]
-        return listX
+                listX += [0]
+            listY += [listX]
+        return listY
     
     def printMap(self):
-        print(self.map_)
+        for elem in self.map_:
+            print(elem)
     
     # =================
     # Getter and Setter
