@@ -1,5 +1,9 @@
+#!usr/bin/env python3
+
 import Map
 import Robot
+import matplotlib
+import tkinter
     
 if __name__ == "__main__":
     

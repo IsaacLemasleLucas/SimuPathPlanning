@@ -1,0 +1,11 @@
+=================
+   TODO LIST : 
+=================
+
+- Gérer les débordures de map (index out of range)
+- Pourvoir augmenter la taille de la map de tout côté
+- Pouvoir sauvegarder la map, et la recharger derrière
+
+Graphique : 
+- Afficher la carte sous forme Graphique / Quadrillage
+- Afficher les obstacles et les robots
