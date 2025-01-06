@@ -1,12 +1,19 @@
+import pygame
+
 class Map:
     
-    def __init__(self, x=1, y=1):
+    def __init__(self, x=1, y=1, scale=20):
+        pygame.init()
         self.x_ = x
         self.y_ = y
+        self.scale_ = scale
+        self.windows_x_ = self.x_ * self.scale_
+        self.windows_y_ = self.y_ * self.scale_
         self.free_param = 'o'
         self.occupy_param = 'X'
         self.block_param = 'B'
         self.map_ = self.initMap()
+        self.fenetre_ = pygame.display.set_mode((self.windows_x_, self.windows_y_))
         
     # initialize the map with everything on a free status
     def initMap(self):
@@ -22,6 +29,13 @@ class Map:
     def printMap(self):
         for elem in self.map_:
             print(elem)
+        for xi in range(len(self.map_)):
+            for yi in range(len(self.map_[xi])):
+                if not self.check_free(xi,yi):
+                    pygame.draw.rect(self.fenetre_, (255,0,0), (xi*self.scale_,
+                                                                yi*self.scale_,
+                                                                (xi+1)*self.scale_, 
+                                                                (yi+1)*self.scale_))
             
     # Modify the map
     def occupy(self,x,y):
@@ -61,4 +75,4 @@ class Map:
         self.map_[y-1][x-1] = value
     
     def getMap(self,x, y):
-        return(self.map_[y-1][x-1])
+        return(self.map_[x-1][y-1])

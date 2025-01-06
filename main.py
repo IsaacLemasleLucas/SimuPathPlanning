@@ -2,10 +2,17 @@
 
 import Map
 import Robot
-import matplotlib
-import tkinter
+import pygame
+import sys
     
 if __name__ == "__main__":
+    
+    # Initialisation of pygame
+    #pygame.init()
+    
+    # Creation of a windows
+    #fenetre = pygame.display.set_mode((640,480))
+
     
     # Creation of the map
     my_map = Map.Map(15,20)
@@ -15,15 +22,27 @@ if __name__ == "__main__":
     snoopy = Robot.Robot(my_map, 3, 4)
     spot = Robot.Robot(my_map,3,2)
     
+    my_map.printMap()
+    
     # Actions
-    my_map.printMap()
-    print("\n\n")
-    my_map.printMap()
-    snoopy.go_right(my_map)
-    snoopy.go_right(my_map)
-    snoopy.go_right(my_map)
-    print("\n\n")
-    my_map.printMap()
+    # my_map.printMap()
+    # print("\n\n")
+    # my_map.printMap()
+    # snoopy.go_right(my_map)
+    # snoopy.go_right(my_map)
+    # snoopy.go_right(my_map)
+    # print("\n\n")
+    # my_map.printMap()
     
+    # Draw grid
+    #
     
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.display.flip()
+        
     
