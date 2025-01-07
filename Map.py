@@ -10,6 +10,7 @@ class Map:
         self.scale_ = scale
         self.windows_x_ = self.x_ * self.scale_
         self.windows_y_ = self.y_ * self.scale_
+        
         # Initialisation of the param saved in the file json
         with open("param_map.json","r") as file:
             file_dict = json.load(file)
@@ -18,8 +19,11 @@ class Map:
         self.block_param = file_dict["map"]["block_param"]
         self.color_osbtacle = tuple(file_dict["colors"]["obstacle"])
         self.color_robot = tuple(file_dict["colors"]["robot"])
+        color_background = tuple(file_dict["colors"]["background"])
+        
         self.map_ = self.initMap()
         self.fenetre_ = pygame.display.set_mode((self.windows_x_, self.windows_y_))
+        self.fenetre_.fill(color_background)
         
     # initialize the map with everything on a free status
     def initMap(self):
