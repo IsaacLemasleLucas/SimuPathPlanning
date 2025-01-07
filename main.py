@@ -4,6 +4,7 @@ import Map
 import Robot
 import pygame
 import sys
+import time
     
 if __name__ == "__main__":
     
@@ -18,25 +19,29 @@ if __name__ == "__main__":
     my_map = Map.Map(15,20)
     my_map.obstacle(5,12,3,6)
     my_map.obstacle(10,13,5,20)
+
     # Creation of the robot
     snoopy = Robot.Robot(my_map, 3, 4)
     spot = Robot.Robot(my_map,3,2)
-    
+
     my_map.printMap()
     
     # Actions
-    # my_map.printMap()
-    # print("\n\n")
-    # my_map.printMap()
-    # snoopy.go_right(my_map)
-    # snoopy.go_right(my_map)
-    # snoopy.go_right(my_map)
-    # print("\n\n")
-    # my_map.printMap()
+    my_map.printMap()
+    # time.sleep(3)
+    print("\n\n")
+    my_map.printMap()
+    # time.sleep(3)
+    snoopy.go_down(my_map)
+    snoopy.go_down(my_map)
+    snoopy.go_down(my_map)
+    snoopy.go_down(my_map)
+    snoopy.go_down(my_map)
+    snoopy.go_down(my_map)
+    print("\n\n")
+    my_map.printMap()
     
-    # Draw grid
-    #
-    
+
 
     while True:
         for event in pygame.event.get():

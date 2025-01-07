@@ -1,17 +1,23 @@
 import pygame
+import json
 
 class Map:
     
-    def __init__(self, x=1, y=1, scale=20):
+    def __init__(self, x=1, y=1, scale=25):
         pygame.init()
         self.x_ = x
         self.y_ = y
         self.scale_ = scale
         self.windows_x_ = self.x_ * self.scale_
         self.windows_y_ = self.y_ * self.scale_
-        self.free_param = 'o'
-        self.occupy_param = 'X'
-        self.block_param = 'B'
+        # Initialisation of the param saved in the file json
+        with open("param_map.json","r") as file:
+            file_dict = json.load(file)
+        self.free_param = file_dict["map"]["free_param"]
+        self.occupy_param = file_dict["map"]["occupy_param"]
+        self.block_param = file_dict["map"]["block_param"]
+        self.color_osbtacle = tuple(file_dict["color"]["obstacle"])
+        self.color_robot = tuple(file_dict["color"]["robot"])
         self.map_ = self.initMap()
         self.fenetre_ = pygame.display.set_mode((self.windows_x_, self.windows_y_))
         
@@ -32,10 +38,15 @@ class Map:
         for xi in range(len(self.map_)):
             for yi in range(len(self.map_[xi])):
                 if not self.check_free(xi,yi):
-                    pygame.draw.rect(self.fenetre_, (255,0,0), (xi*self.scale_,
-                                                                yi*self.scale_,
-                                                                (xi+1)*self.scale_, 
-                                                                (yi+1)*self.scale_))
+                    
+                    pygame.draw.rect(self.fenetre_, self.color_osbtacle, (yi*self.scale_,
+                                                                          xi*self.scale_,
+                                                                          self.scale_,
+                                                                          self.scale_))
+                    
+    # ==================================
+    # Modicaters and definers of the map
+    # ==================================
             
     # Modify the map
     def occupy(self,x,y):
