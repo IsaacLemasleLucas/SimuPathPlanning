@@ -23,22 +23,7 @@ if __name__ == "__main__":
     # Creation of the robot
     snoopy = Robot.Robot(my_map, 3, 4)
     spot = Robot.Robot(my_map,3,2)
-
-    my_map.printMap()
-    
-    # Actions
-    my_map.printMap()
-    # time.sleep(3)
-    print("\n\n")
-    my_map.printMap()
-    # time.sleep(3)
-    snoopy.go_down(my_map)
-    snoopy.go_down(my_map)
-    snoopy.go_down(my_map)
-    snoopy.go_down(my_map)
-    snoopy.go_down(my_map)
-    snoopy.go_down(my_map)
-    print("\n\n")
+    nao = Robot.Robot(my_map,3,3)
     my_map.printMap()
     
 

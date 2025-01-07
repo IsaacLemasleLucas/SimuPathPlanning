@@ -5,10 +5,10 @@
         "occupy_param" : "X",
         "block_param" : "B"
     },
-    "color":
+    "colors":
     {
         "obstacle": [255,0,0],
-        "robot": [0,255,0],
-        "goal":[0,0,255]
+        "robot": [0,0,255],
+        "goal":[0,255,0]
     }
 }

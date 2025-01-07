@@ -16,8 +16,8 @@ class Map:
         self.free_param = file_dict["map"]["free_param"]
         self.occupy_param = file_dict["map"]["occupy_param"]
         self.block_param = file_dict["map"]["block_param"]
-        self.color_osbtacle = tuple(file_dict["color"]["obstacle"])
-        self.color_robot = tuple(file_dict["color"]["robot"])
+        self.color_osbtacle = tuple(file_dict["colors"]["obstacle"])
+        self.color_robot = tuple(file_dict["colors"]["robot"])
         self.map_ = self.initMap()
         self.fenetre_ = pygame.display.set_mode((self.windows_x_, self.windows_y_))
         
@@ -38,11 +38,11 @@ class Map:
         for xi in range(len(self.map_)):
             for yi in range(len(self.map_[xi])):
                 if not self.check_free(xi,yi):
-                    
-                    pygame.draw.rect(self.fenetre_, self.color_osbtacle, (yi*self.scale_,
-                                                                          xi*self.scale_,
-                                                                          self.scale_,
-                                                                          self.scale_))
+                    color = self.getColor(xi,yi)
+                    pygame.draw.rect(self.fenetre_, color, (yi*self.scale_,
+                                                            xi*self.scale_,
+                                                            self.scale_,
+                                                            self.scale_))
                     
     # ==================================
     # Modicaters and definers of the map
@@ -87,3 +87,11 @@ class Map:
     
     def getMap(self,x, y):
         return(self.map_[x-1][y-1])
+    
+    def getColor(self, x, y):
+        status = self.getMap(x, y)
+        switch = {
+            self.occupy_param : self.color_robot,
+            self.block_param : self.color_osbtacle
+        }
+        return switch.get(status,(255,255,255))
